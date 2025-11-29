@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Showcase | X Cozmoh</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">X Cozmoh</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#templates">Templates</a></li>
+            <li><a href="#contact" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Interactive & Creative Templates</h1>
+        
+        <!-- Search Bar -->
+        <div class="search-container">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search templates by keywords (e.g., finance, portfolio, shop...)">
+                <button id="clearSearch" class="clear-btn" style="display: none;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="template-grid">
+            
+            <div class="template-card" data-keywords="cleaning service business maintenance janitorial housekeeping commercial residential">
+                <div class="template-image-container">
+                    <img src="https://s0.wp.com/mshots/v1/https://demosites.royal-elementor-addons.com/cleaning-v1/?w=600" 
+                          alt="Screenshot of Cleaning v1 Template" 
+                          class="template-image">
+                </div>
+                <div class="template-info">
+                    <div class="template-name">Cleaning Service</div>
+                    <button class="copy-button" 
+                            data-link="https://demosites.royal-elementor-addons.com/cleaning-v1/?ref=rea-plugin-backend-templates"
+                            onclick="copyLink(this)">
+                        Copy Link
+                    </button>
+                </div>
+            </div>
+
+            <div class="template-card" data-keywords="developer portfolio programming coding web development personal showcase tech freelancer">
+                <div class="template-image-container">
+                    <img src="https://s0.wp.com/mshots/v1/https://demosites.royal-elementor-addons.com/developer-portfolio-v1/?w=600" 
+                          alt="Screenshot of Developer Portfolio v1 Template" 
+                          class="template-image">
+                </div>
+                <div class="template-info">
+                    <div class="template-name">Dev Portfolio</div>
+                    <button class="copy-button" 
+                            data-link="https://demosites.royal-elementor-addons.com/developer-portfolio-v1/?ref=rea-plugin-backend-template"
+                            onclick="copyLink(this)">
+                        Copy Link
+                    </button>
+                </div>
+            </div>
+
+            <div class="template-card" data-keywords="shop ecommerce store online shopping retail woocommerce business products">
+                <div class="template-image-container">
+                    <img src="https://s0.wp.com/mshots/v1/https://demosites.royal-elementor-addons.com/shop-wooshop-v2/?w=600" 
+                          alt="Screenshot of Shop Wooshop v2 Template" 
+                          class="template-image">
+                </div>
+                <div class="template-info">
+                    <div class="template-name">Shop Wooshop</div>
+                    <button class="copy-button" 
+                            data-link="https://demosites.royal-elementor-addons.com/shop-wooshop-v2/?ref=rea-plugin-backend-templates"
+                            onclick="copyLink(this)">
+                        Copy Link
+                    </button>
+                </div>
+            </div>
+
+            <div class="template-card" data-keywords="landing page digital product software app saas marketing conversion sales">
+                <div class="template-image-container">
+                    <img src="https://s0.wp.com/mshots/v1/https://demosites.royal-elementor-addons.com/landing-page-digital-product-v1/?w=600" 
+                          alt="Screenshot of Digital Product Landing Page Template" 
+                          class="template-image">
+                </div>
+                <div class="template-info">
+                    <div class="template-name">LP Digital Product</div>
+                    <button class="copy-button" 
+                            data-link="https://demosites.royal-elementor-addons.com/landing-page-digital-product-v1/?ref=rea-plugin-backend-templates"
+                            onclick="copyLink(this)">
+                        Copy Link
+                    </button>
+                </div>
+            </div>
+            
+            <div class="template-card" data-keywords="financial services finance banking investment money advisor accounting consulting">
+                <div class="template-image-container">
+                    <img src="https://s0.wp.com/mshots/v1/https://demosites.royal-elementor-addons.com/financial-services-v1/?w=600" 
+                          alt="Screenshot of Financial Services v1 Template" 
+                          class="template-image">
+                </div>
+                <div class="template-info">
+                    <div class="template-name">Financial Services</div>
+                    <button class="copy-button" 
+                            data-link="https://demosites.royal-elementor-addons.com/financial-services-v1/?ref=rea-plugin-backend-templates"
+                            onclick="copyLink(this)">
+                        Copy Link
+                    </button>
+                </div>
+            </div>
+            
+            <div class="template-card" data-keywords="one page single page business corporate simple minimal landing">
+                <div class="template-image-container">
+                    <img src="https://s0.wp.com/mshots/v1/https://demosites.royal-elementor-addons.com/one-page-v2/?w=600" 
+                          alt="Screenshot of One Page v2 Template" 
+                          class="template-image">
+                </div>
+                <div class="template-info">
+                    <div class="template-name">One Page</div>
+                    <button class="copy-button" 
+                            data-link="https://demosites.royal-elementor-addons.com/one-page-v2/?ref=rea-plugin-backend-templates"
+                            onclick="copyLink(this)">
+                        Copy Link
+                    </button>
+                </div>
+            </div>
+            
+            <div class="template-card" data-keywords="car repair automotive mechanic garage service vehicle maintenance auto">
+                <div class="template-image-container">
+                    <img src="https://s0.wp.com/mshots/v1/https://demosites.royal-elementor-addons.com/car-repair-v1/?w=600" 
+                          alt="Screenshot of Car Repair v1 Template" 
+                          class="template-image">
+                </div>
+                <div class="template-info">
+                    <div class="template-name">Car Repair</div>
+                    <button class="copy-button" 
+                            data-link="https://demosites.royal-elementor-addons.com/car-repair-v1/?ref=rea-plugin-backend-templates"
+                            onclick="copyLink(this)">
+                        Copy Link
+                    </button>
+                </div>
+            </div>
+
+            <div class="template-card" data-keywords="fitness gym health workout exercise training sports wellness bodybuilding">
+                <div class="template-image-container">
+                    <img src="https://s0.wp.com/mshots/v1/https://demosites.royal-elementor-addons.com/fitness-gym-v1/?w=600" 
+                          alt="Screenshot of Fitness Gym v1 Template" 
+                          class="template-image">
+                </div>
+                <div class="template-info">
+                    <div class="template-name">Fitness Gym</div>
+                    <button class="copy-button" 
+                            data-link="https://demosites.royal-elementor-addons.com/fitness-gym-v1/?ref=rea-plugin-backend-templates"
+                            onclick="copyLink(this)">
+                        Copy Link
+                    </button>
+                </div>
+            </div>
+            
+            <div class="template-card" data-keywords="investment platform finance trading stocks crypto fintech money wealth management">
+                <div class="template-image-container">
+                    <img src="https://s0.wp.com/mshots/v1/https://demosites.royal-elementor-addons.com/landing-page-investment-platform-v1/?w=600" 
+                          alt="Screenshot of Investment Platform Landing Page Template" 
+                          class="template-image">
+                </div>
+                <div class="template-info">
+                    <div class="template-name">LP Investment Platform</div>
+                    <button class="copy-button" 
+                            data-link="https://demosites.royal-elementor-addons.com/landing-page-investment-platform-v1/?ref=rea-plugin-backend-templates"
+                            onclick="copyLink(this)">
+                        Copy Link
+                    </button>
+                </div>
+            </div>
+            
+            <div class="template-card" data-keywords="online course education learning training tutorial elearning school academy">
+                <div class="template-image-container">
+                    <img src="https://s0.wp.com/mshots/v1/https://demosites.royal-elementor-addons.com/online-course-v1/?w=600" 
+                          alt="Screenshot of Online Course v1 Template" 
+                          class="template-image">
+                </div>
+                <div class="template-info">
+                    <div class="template-name">Online Course</div>
+                    <button class="copy-button" 
+                            data-link="https://demosites.royal-elementor-addons.com/online-course-v1/?ref=rea-plugin-backend-templates"
+                            onclick="copyLink(this)">
+                        Copy Link
+                    </button>
+                </div>
+            </div>
+            
+            <div class="template-card" data-keywords="dental dentist medical health clinic orthodontics teeth healthcare doctor">
+                <div class="template-image-container">
+                    <img src="https://s0.wp.com/mshots/v1/https://demosites.royal-elementor-addons.com/dental-v1/?w=600" 
+                          alt="Screenshot of Dental v1 Template" 
+                          class="template-image">
+                </div>
+                <div class="template-info">
+                    <div class="template-name">Dental</div>
+                    <button class="copy-button" 
+                            data-link="https://demosites.royal-elementor-addons.com/dental-v1/?ref=rea-plugin-backend-templates"
+                            onclick="copyLink(this)">
+                        Copy Link
+                    </button>
+                </div>
+            </div>
+            
+            <div class="template-card" data-keywords="lawyer legal attorney law firm justice court litigation consulting">
+                <div class="template-image-container">
+                    <img src="https://s0.wp.com/mshots/v1/https://demosites.royal-elementor-addons.com/lawyer-v1/?w=600" 
+                          alt="Screenshot of Lawyer v1 Template" 
+                          class="template-image">
+                </div>
+                <div class="template-info">
+                    <div class="template-name">Lawyer</div>
+                    <button class="copy-button" 
+                            data-link="https://demosites.royal-elementor-addons.com/lawyer-v1/?ref=rea-plugin-backend-templates"
+                            onclick="copyLink(this)">
+                        Copy Link
+                    </button>
+                </div>
+            </div>
+            
+            <div class="template-card" data-keywords="restaurant food dining cafe menu culinary hospitality catering bistro">
+                <div class="template-image-container">
+                    <img src="https://s0.wp.com/mshots/v1/https://demosites.royal-elementor-addons.com/restaurant-v1/?w=600" 
+                          alt="Screenshot of Restaurant v1 Template" 
+                          class="template-image">
+                </div>
+                <div class="template-info">
+                    <div class="template-name">Restaurant</div>
+                    <button class="copy-button" 
+                            data-link="https://demosites.royal-elementor-addons.com/restaurant-v1/?ref=rea-plugin-backend-templates"
+                            onclick="copyLink(this)">
+                        Copy Link
+                    </button>
+                </div>
+            </div> 
+
+            <div class="template-card" data-keywords="construction building contractor architecture engineering renovation industrial">
+                <div class="template-image-container">
+                    <img src="https://s0.wp.com/mshots/v1/https://demosites.royal-elementor-addons.com/construction-v1/?w=600" 
+                          alt="Screenshot of Construction Company Template" 
+                          class="template-image">
+                </div>
+                <div class="template-info">
+                    <div class="template-name">Construction Company</div>
+                    <button class="copy-button" 
+                            data-link="https://demosites.royal-elementor-addons.com/construction-v1/?ref=rea-plugin-backend-templates"
+                            onclick="copyLink(this)">
+                        Copy Link
+                    </button>
+                </div>
+            </div>
+
+            <div class="template-card" data-keywords="hotel booking accommodation hospitality resort vacation travel lodging">
+                <div class="template-image-container">
+                    <img src="https://s0.wp.com/mshots/v1/https://demosites.royal-elementor-addons.com/hotel-v1/?w=600" 
+                          alt="Screenshot of Hotel Booking Template" 
+                          class="template-image">
+                </div>
+                <div class="template-info">
+                    <div class="template-name">Hotel Booking</div>
+                    <button class="copy-button" 
+                            data-link="https://demosites.royal-elementor-addons.com/hotel-v1/?ref=rea-plugin-backend-templates"
+                            onclick="copyLink(this)">
+                        Copy Link
+                    </button>
+                </div>
+            </div>
+
+            <div class="template-card" data-keywords="travel agency tourism vacation holiday booking adventure tour guide">
+                <div class="template-image-container">
+                    <img src="https://s0.wp.com/mshots/v1/https://demosites.royal-elementor-addons.com/travel-v1/?w=600" 
+                          alt="Screenshot of Travel Agency Template" 
+                          class="template-image">
+                </div>
+                <div class="template-info">
+                    <div class="template-name">Travel Agency</div>
+                    <button class="copy-button" 
+                            data-link="https://demosites.royal-elementor-addons.com/travel-v1/?ref=rea-plugin-backend-templates"
+                            onclick="copyLink(this)">
+                        Copy Link
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h3>Template Showcase</h3>
+                <p>X Cozmoh is your dedicated partner for professional and cutting-edge website development. We specialize in creating custom, responsive, and high-performing digital experiences that drive business growth.</p>
+            </div>
+            
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">All Templates</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section social">
+                <h3>Follow X Cozmoh</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            &copy; 2025 Template Showcase. All rights reserved.
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
