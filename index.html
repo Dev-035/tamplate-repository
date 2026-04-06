@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Template Showcase | X Cozmoh</title>
+    <link rel="stylesheet" href="style.css?v=11">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">X Cozmoh</div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#" onclick="showView('home')" class="nav-link active">Home</a></li>
+            <li><a href="#" onclick="showView('admin')" class="nav-link">Add Template</a></li>
+            <li><a href="#" onclick="showView('dashboard')" class="nav-link">Dashboard</a></li>
+            <li><a href="#" onclick="showView('contact')" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="nav-hamburger" id="navHamburger" onclick="toggleNavMenu()" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+    </nav>
+
+    <!-- HOME/TEMPLATES VIEW -->
+    <div id="home-view" class="view-container">
+        <div class="container">
+            <h1>Interactive & <span>Creative Templates</span></h1>
+            <p class="page-subtitle">Browse, preview and copy links to stunning website templates</p>
+            
+            <!-- Search Bar -->
+            <div class="search-section">
+                <div class="search-container" style="position: relative;">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="template-search" placeholder="Search templates..." class="search-input" autocomplete="off">
+                    <div class="search-suggestions" id="search-suggestions"></div>
+                </div>
+            </div>
+            
+            <div class="template-grid">
+                <!-- Templates will be loaded dynamically from database -->
+                <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                    <p>Loading templates...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN VIEW -->
+    <div id="admin-view" class="view-container" style="display: none;">
+        <div class="admin-container">
+            <a href="#" onclick="showView('home')" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Templates
+            </a>
+            
+            <h1>Add New Template</h1>
+            <p style="margin-bottom: 30px; color: #6c757d;">
+                Fill in the details below to add a new template to the showcase.
+            </p>
+            
+            <div id="message-container"></div>
+            
+            <form id="template-form">
+                <div class="form-group">
+                    <label for="template-name">
+                        <i class="fas fa-tag"></i> Template Name
+                    </label>
+                    <input 
+                        type="text" 
+                        id="template-name" 
+                        name="name" 
+                        placeholder="Enter template name (e.g., Modern Portfolio)"
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="template-link">
+                        <i class="fas fa-link"></i> Template Link
+                    </label>
+                    <input 
+                        type="url" 
+                        id="template-link" 
+                        name="link" 
+                        placeholder="Enter template URL (e.g., https://example.com)"
+                        required
+                    >
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submit-btn">
+                    <i class="fas fa-plus"></i> Add Template
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- DASHBOARD VIEW -->
+    <div id="dashboard-view" class="view-container" style="display: none;">
+
+        <!-- Mobile Panel Toggle -->
+        <button class="mobile-panel-toggle" id="mobilePanelToggle" onclick="toggleMobilePanel()" aria-label="Open client panel">
+            <span></span><span></span><span></span>
+        </button>
+
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobilePanel()"></div>
+
+        <div class="dashboard-container">
+
+            <!-- ── LEFT PANEL ── -->
+            <div class="left-panel">
+
+                <!-- Client Header -->
+                <div class="client-header">
+                    <p class="client-label">CLIENT</p>
+                    <div class="client-logo" style="position:relative; display:inline-block;">
+                        <img id="client-logo-img" src="" alt="Client Logo" class="logo-image" style="display:none;">
+                        <div class="logo-placeholder" id="logo-placeholder">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <!-- Edit button on top of logo -->
+                        <button class="logo-edit-btn" onclick="toggleClientSetup()" title="Edit Client">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                    </div>
+                    <h2 class="client-title" id="client-name-display">New Client</h2>
+                    <p class="client-website-label" id="client-website-label"></p>
+
+                    <!-- Brand Colors -->
+                    <div class="brand-colors-inline" id="brand-colors-section">
+                        <div class="color-dots" id="color-dots-container"></div>
+                        <div class="color-tooltip" id="color-tooltip">
+                            <div class="tooltip-swatch" id="tooltip-swatch"></div>
+                            <div class="tooltip-info">
+                                <span class="tooltip-name" id="tooltip-name"></span>
+                                <span class="tooltip-code" id="tooltip-code"></span>
+                            </div>
+                        </div>
+                        <div class="color-info">
+                            <span class="color-count">Brand Colors</span>
+                            <span class="color-details" id="color-details-label"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client Setup Panel -->
+                <div class="client-setup-panel" id="client-setup-panel" style="display:none;">
+                    <div class="setup-header">
+                        <h3><i class="fas fa-cog"></i> Client Setup</h3>
+                        <button class="setup-close-btn" onclick="toggleClientSetup()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <div class="setup-body">
+                        <!-- Client Name -->
+                        <div class="setup-field">
+                            <label><i class="fas fa-user"></i> Client Name</label>
+                            <input type="text" id="setup-client-name" placeholder="e.g. Dr. Ram Kishan Nag" class="setup-input">
+                        </div>
+
+                        <!-- Client Logo -->
+                        <div class="setup-field">
+                            <label><i class="fas fa-image"></i> Client Logo</label>
+                            <div class="logo-upload-area" onclick="document.getElementById('setup-logo-input').click()">
+                                <img id="setup-logo-preview" src="" alt="" style="display:none; max-width:80px; max-height:60px; border-radius:8px;">
+                                <div id="setup-logo-placeholder">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Click to upload logo</span>
+                                </div>
+                            </div>
+                            <input type="file" id="setup-logo-input" accept="image/*" onchange="previewLogo(this)" style="display:none;">
+                        </div>
+
+                        <!-- Website URL -->
+                        <div class="setup-field">
+                            <label><i class="fas fa-globe"></i> Website URL</label>
+                            <input type="url" id="setup-website-url" placeholder="https://example.com" class="setup-input">
+                        </div>
+
+                        <!-- Brand Colors -->
+                        <div class="setup-field">
+                            <label><i class="fas fa-palette"></i> Brand Colors</label>
+                            <div class="color-inputs" id="color-inputs">
+                                <!-- dynamically rendered -->
+                            </div>
+                            <button class="add-color-btn" onclick="addColorInput()">
+                                <i class="fas fa-plus"></i> Add Color
+                            </button>
+                        </div>
+
+                        <!-- Save Button -->
+                        <button class="setup-save-btn" onclick="saveClientSetup()">
+                            <i class="fas fa-save"></i> Save & Apply
+                        </button>
+
+                        <!-- Reset Button -->
+                        <button class="setup-reset-btn" onclick="resetClientSetup()">
+                            <i class="fas fa-trash"></i> Reset to Default
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Client Notes -->
+                <div class="section">
+                    <div class="notes-header">
+                        <h3>CLIENT NOTES</h3>
+                        <div class="notes-actions">
+                            <button class="save-notes-btn" onclick="saveNotes()">
+                                <i class="fas fa-save"></i> Save
+                            </button>
+                            <button class="clear-notes-btn" onclick="clearNotes()" title="Clear notes">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="client-notes-editor" class="notes-editor"
+                        contenteditable="true"
+                        placeholder="Write client notes here..."
+                        oninput="autoSaveNotes()">
+                    </div>
+                </div>
+
+                <!-- Document Upload -->
+                <div class="section">
+                    <h3>DOCUMENTS</h3>
+                    <label class="upload-btn" for="doc-upload-input">
+                        <i class="fas fa-cloud-upload-alt"></i> Upload Files
+                    </label>
+                    <input type="file" id="doc-upload-input" multiple accept="*/*"
+                        onchange="handleFileUpload(this)" style="display:none;">
+                    <div id="uploaded-files-list" class="uploaded-files-list"></div>
+
+                    <!-- Progress -->
+                    <div class="progress-section">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="checklist-progress-fill" style="width:0%"></div>
+                        </div>
+                        <span class="progress-text" id="checklist-progress-text">0% COMPLETE</span>
+                    </div>
+                </div>
+
+                <!-- Checklist -->
+                <div class="section">
+                    <div class="checklist-header">
+                        <h3>CHECKLIST <span id="checklist-count">(0)</span></h3>
+                        <button class="undo-btn" id="undo-btn" onclick="undoDelete()" style="display:none;">
+                            <i class="fas fa-undo"></i> Undo
+                        </button>
+                    </div>
+                    <div id="checklist-container"></div>
+                    <div class="add-checklist-row">
+                        <input type="text" id="new-checklist-input" class="new-checklist-input" placeholder="Add new task...">
+                        <button class="add-checklist-btn" onclick="addChecklistItem()">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div><!-- /left-panel -->
+
+            <!-- ── RIGHT PANEL ── -->
+            <div class="right-panel">
+                <div class="website-preview-section">
+                    <div class="website-url-bar">
+                        <i class="fas fa-globe"></i>
+                        <span id="preview-url-label">No website configured</span>
+                        <a id="preview-open-link" href="#" target="_blank" title="Open in new tab">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <iframe id="client-website-iframe"
+                        src=""
+                        class="website-iframe"
+                        frameborder="0"
+                        scrolling="yes"
+                        allowfullscreen>
+                    </iframe>
+                    <div class="no-website-placeholder" id="no-website-placeholder">
+                        <i class="fas fa-globe"></i>
+                        <p>No website URL configured</p>
+                        <small>Set the client website URL in the config</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer id="templates">
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h3>Template Showcase</h3>
+                <p>X Cozmoh is your dedicated partner for professional and cutting-edge website development. We specialize in creating custom, responsive, and high-performing digital experiences that drive business growth.</p>
+            </div>
+            
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">All Templates</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section social">
+                <h3>Follow X Cozmoh</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            &copy; 2025 Template Showcase. All rights reserved.
+        </div>
+    </footer>
+
+
+    <script src="main.js?v=10"></script>
+</body>
+</html>
